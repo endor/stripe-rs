@@ -98,7 +98,7 @@ impl Topup {
     ///
     /// Other top-up details are not editable by design.
     pub fn update(client: &Client, id: &TopupId, params: UpdateTopup<'_>) -> Response<Topup> {
-        client.post_form(&format!("/topups/{}", id), &params)
+        client.post_form(&format!("/topups/{}", id), &params, None)
     }
 }
 

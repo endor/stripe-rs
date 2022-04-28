@@ -116,7 +116,7 @@ impl Price {
     ///
     /// The price can be recurring or one-time.
     pub fn create(client: &Client, params: CreatePrice<'_>) -> Response<Price> {
-        client.post_form("/prices", &params)
+        client.post_form("/prices", &params, None)
     }
 
     /// Retrieves the price with the given ID.
@@ -128,7 +128,7 @@ impl Price {
     ///
     /// Any parameters not provided are left unchanged.
     pub fn update(client: &Client, id: &PriceId, params: UpdatePrice<'_>) -> Response<Price> {
-        client.post_form(&format!("/prices/{}", id), &params)
+        client.post_form(&format!("/prices/{}", id), &params, None)
     }
 }
 

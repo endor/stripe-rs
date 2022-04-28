@@ -118,7 +118,7 @@ impl SetupIntent {
     /// After the SetupIntent is created, attach a payment method and [confirm](https://stripe.com/docs/api/setup_intents/confirm)
     /// to collect any required permissions to charge the payment method later.
     pub fn create(client: &Client, params: CreateSetupIntent<'_>) -> Response<SetupIntent> {
-        client.post_form("/setup_intents", &params)
+        client.post_form("/setup_intents", &params, None)
     }
 
     /// Retrieves the details of a SetupIntent that has previously been created.
@@ -136,7 +136,7 @@ impl SetupIntent {
         id: &SetupIntentId,
         params: UpdateSetupIntent<'_>,
     ) -> Response<SetupIntent> {
-        client.post_form(&format!("/setup_intents/{}", id), &params)
+        client.post_form(&format!("/setup_intents/{}", id), &params, None)
     }
 }
 

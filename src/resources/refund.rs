@@ -104,7 +104,7 @@ impl Refund {
 
     /// Create a refund.
     pub fn create(client: &Client, params: CreateRefund<'_>) -> Response<Refund> {
-        client.post_form("/refunds", &params)
+        client.post_form("/refunds", &params, None)
     }
 
     /// Retrieves the details of an existing refund.
@@ -116,7 +116,7 @@ impl Refund {
     ///
     /// Any parameters not provided will be left unchanged.  This request only accepts `metadata` as an argument.
     pub fn update(client: &Client, id: &RefundId, params: UpdateRefund<'_>) -> Response<Refund> {
-        client.post_form(&format!("/refunds/{}", id), &params)
+        client.post_form(&format!("/refunds/{}", id), &params, None)
     }
 }
 

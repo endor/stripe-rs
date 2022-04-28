@@ -63,7 +63,7 @@ impl TaxRate {
 
     /// Creates a new tax rate.
     pub fn create(client: &Client, params: CreateTaxRate<'_>) -> Response<TaxRate> {
-        client.post_form("/tax_rates", &params)
+        client.post_form("/tax_rates", &params, None)
     }
 
     /// Retrieves a tax rate with the given ID.
@@ -73,7 +73,7 @@ impl TaxRate {
 
     /// Updates an existing tax rate.
     pub fn update(client: &Client, id: &TaxRateId, params: UpdateTaxRate<'_>) -> Response<TaxRate> {
-        client.post_form(&format!("/tax_rates/{}", id), &params)
+        client.post_form(&format!("/tax_rates/{}", id), &params, None)
     }
 }
 

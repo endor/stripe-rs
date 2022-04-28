@@ -52,7 +52,7 @@ impl FileLink {
 
     /// Creates a new file link object.
     pub fn create(client: &Client, params: CreateFileLink<'_>) -> Response<FileLink> {
-        client.post_form("/file_links", &params)
+        client.post_form("/file_links", &params, None)
     }
 
     /// Retrieves the file link with the given ID.
@@ -68,7 +68,7 @@ impl FileLink {
         id: &FileLinkId,
         params: UpdateFileLink<'_>,
     ) -> Response<FileLink> {
-        client.post_form(&format!("/file_links/{}", id), &params)
+        client.post_form(&format!("/file_links/{}", id), &params, None)
     }
 }
 

@@ -20,7 +20,7 @@ impl PaymentMethod {
         payment_method_id: &PaymentMethodId,
         params: AttachPaymentMethod,
     ) -> Response<PaymentMethod> {
-        client.post_form(&format!("/payment_methods/{}/attach", payment_method_id), params)
+        client.post_form(&format!("/payment_methods/{}/attach", payment_method_id), params, None)
     }
 
     /// Detach a payment method from its customer

@@ -1460,7 +1460,7 @@ fn gen_impl_requests(
                 out.push_str("> {\n");
                 out.push_str("        client.post_form(\"/");
                 out.push_str(&segments.join("/"));
-                out.push_str("\", &params)\n");
+                out.push_str("\", &params, None)\n");
                 out.push_str("    }\n");
                 methods.push(out);
             } else if segments.len() == 2 {
@@ -1522,7 +1522,7 @@ fn gen_impl_requests(
                     out.push_str("> {\n");
                     out.push_str("        client.post_form(");
                     out.push_str(&format!("&format!(\"/{}/{{}}\", id)", segments[0]));
-                    out.push_str(", &params)\n");
+                    out.push_str(", &params, None)\n");
                     out.push_str("    }\n");
                     methods.push(out);
                 }

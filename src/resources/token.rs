@@ -50,7 +50,7 @@ impl Token {
     ///
     /// This token can be used only once, by attaching it to a [Custom account](https://stripe.com/docs/api#accounts).
     pub fn create(client: &Client, params: CreateToken<'_>) -> Response<Token> {
-        client.post_form("/tokens", &params)
+        client.post_form("/tokens", &params, None)
     }
 
     /// Retrieves the token with the given ID.

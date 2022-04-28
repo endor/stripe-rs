@@ -359,7 +359,7 @@ impl Invoice {
     ///
     /// The draft invoice created pulls in all pending invoice items on that customer, including prorations.
     pub fn create(client: &Client, params: CreateInvoice<'_>) -> Response<Invoice> {
-        client.post_form("/invoices", &params)
+        client.post_form("/invoices", &params, None)
     }
 
     /// Retrieves the invoice with the given ID.

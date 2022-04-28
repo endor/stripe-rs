@@ -73,7 +73,7 @@ impl PaymentMethod {
     ///
     /// Read the [Stripe.js reference](https://stripe.com/docs/stripe-js/reference#stripe-create-payment-method) to learn how to create PaymentMethods via Stripe.js.
     pub fn create(client: &Client, params: CreatePaymentMethod<'_>) -> Response<PaymentMethod> {
-        client.post_form("/payment_methods", &params)
+        client.post_form("/payment_methods", &params, None)
     }
 
     /// Retrieves a PaymentMethod object.
@@ -93,7 +93,7 @@ impl PaymentMethod {
         id: &PaymentMethodId,
         params: UpdatePaymentMethod<'_>,
     ) -> Response<PaymentMethod> {
-        client.post_form(&format!("/payment_methods/{}", id), &params)
+        client.post_form(&format!("/payment_methods/{}", id), &params, None)
     }
 }
 

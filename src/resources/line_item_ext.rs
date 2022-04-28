@@ -8,7 +8,7 @@ impl InvoiceLineItem {
     ///
     /// For more details see https://stripe.com/docs/api#invoice_line_item_object
     pub fn create(client: &Client, params: CreateInvoiceLineItem<'_>) -> Response<InvoiceLineItem> {
-        client.post_form("/invoiceitems", &params)
+        client.post_form("/invoiceitems", &params, None)
     }
 }
 

@@ -18,7 +18,7 @@ impl Customer {
             source: PaymentSourceParams,
         }
         let params = AttachSource { source };
-        client.post_form(&format!("/customers/{}/sources", customer_id), params)
+        client.post_form(&format!("/customers/{}/sources", customer_id), params, None)
     }
 
     /// Detaches a source from a customer
@@ -53,6 +53,7 @@ impl Customer {
         client.post_form(
             &format!("/customers/{}/sources/{}/verify", customer_id, bank_account_id),
             params,
+            None,
         )
     }
 }

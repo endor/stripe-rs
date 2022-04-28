@@ -95,7 +95,7 @@ impl Transfer {
     ///
     /// Your [Stripe balance](https://stripe.com/docs/api#balance) must be able to cover the transfer amount, or you’ll receive an “Insufficient Funds” error.
     pub fn create(client: &Client, params: CreateTransfer<'_>) -> Response<Transfer> {
-        client.post_form("/transfers", &params)
+        client.post_form("/transfers", &params, None)
     }
 
     /// Retrieves the details of an existing transfer.
@@ -113,7 +113,7 @@ impl Transfer {
         id: &TransferId,
         params: UpdateTransfer<'_>,
     ) -> Response<Transfer> {
-        client.post_form(&format!("/transfers/{}", id), &params)
+        client.post_form(&format!("/transfers/{}", id), &params, None)
     }
 }
 

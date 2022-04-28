@@ -131,7 +131,7 @@ impl Order {
 
     /// Creates a new order object.
     pub fn create(client: &Client, params: CreateOrder<'_>) -> Response<Order> {
-        client.post_form("/orders", &params)
+        client.post_form("/orders", &params, None)
     }
 
     /// Retrieves the details of an existing order.
@@ -145,7 +145,7 @@ impl Order {
     ///
     /// Any parameters not provided will be left unchanged.
     pub fn update(client: &Client, id: &OrderId, params: UpdateOrder<'_>) -> Response<Order> {
-        client.post_form(&format!("/orders/{}", id), &params)
+        client.post_form(&format!("/orders/{}", id), &params, None)
     }
 }
 

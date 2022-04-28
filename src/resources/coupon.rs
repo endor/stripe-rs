@@ -95,7 +95,7 @@ impl Coupon {
     /// If you set an `amount_off`, that amount will be subtracted from any invoice’s subtotal.
     /// For example, an invoice with a subtotal of $100 will have a final total of $0 if a coupon with an `amount_off` of 20000 is applied to it and an invoice with a subtotal of $300 will have a final total of $100 if a coupon with an `amount_off` of 20000 is applied to it.
     pub fn create(client: &Client, params: CreateCoupon<'_>) -> Response<Coupon> {
-        client.post_form("/coupons", &params)
+        client.post_form("/coupons", &params, None)
     }
 
     /// Retrieves the coupon with the given ID.
@@ -107,7 +107,7 @@ impl Coupon {
     ///
     /// Other coupon details (currency, duration, amount_off) are, by design, not editable.
     pub fn update(client: &Client, id: &CouponId, params: UpdateCoupon<'_>) -> Response<Coupon> {
-        client.post_form(&format!("/coupons/{}", id), &params)
+        client.post_form(&format!("/coupons/{}", id), &params, None)
     }
 
     /// You can delete coupons via the [coupon management](https://dashboard.stripe.com/coupons) page of the Stripe dashboard.

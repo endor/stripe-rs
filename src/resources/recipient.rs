@@ -84,7 +84,7 @@ impl Recipient {
     /// Creates a new `Recipient` object and verifies the recipient’s identity.
     /// Also verifies the recipient’s bank account information or debit card, if either is provided.
     pub fn create(client: &Client, params: CreateRecipient<'_>) -> Response<Recipient> {
-        client.post_form("/recipients", &params)
+        client.post_form("/recipients", &params, None)
     }
 
     /// Retrieves the details of an existing recipient.
@@ -104,7 +104,7 @@ impl Recipient {
         id: &RecipientId,
         params: UpdateRecipient<'_>,
     ) -> Response<Recipient> {
-        client.post_form(&format!("/recipients/{}", id), &params)
+        client.post_form(&format!("/recipients/{}", id), &params, None)
     }
 
     /// Permanently deletes a recipient.

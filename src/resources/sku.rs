@@ -90,7 +90,7 @@ impl Sku {
 
     /// Creates a new SKU associated with a product.
     pub fn create(client: &Client, params: CreateSku<'_>) -> Response<Sku> {
-        client.post_form("/skus", &params)
+        client.post_form("/skus", &params, None)
     }
 
     /// Retrieves the details of an existing SKU.
@@ -105,7 +105,7 @@ impl Sku {
     /// Any parameters not provided will be left unchanged.  Note that a SKU’s `attributes` are not editable.
     /// Instead, you would need to deactivate the existing SKU and create a new one with the new attribute values.
     pub fn update(client: &Client, id: &SkuId, params: UpdateSku<'_>) -> Response<Sku> {
-        client.post_form(&format!("/skus/{}", id), &params)
+        client.post_form(&format!("/skus/{}", id), &params, None)
     }
 
     /// Delete a SKU.

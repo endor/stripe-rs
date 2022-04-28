@@ -226,7 +226,7 @@ impl Charge {
     /// If your API key is in test mode, the supplied payment source (e.g., card) won’t actually be charged, although everything else will occur as if in live mode.
     /// (Stripe assumes that the charge would have completed successfully).
     pub fn create(client: &Client, params: CreateCharge<'_>) -> Response<Charge> {
-        client.post_form("/charges", &params)
+        client.post_form("/charges", &params, None)
     }
 
     /// Retrieves the details of a charge that has previously been created.
@@ -241,7 +241,7 @@ impl Charge {
     ///
     /// Any parameters not provided will be left unchanged.
     pub fn update(client: &Client, id: &ChargeId, params: UpdateCharge<'_>) -> Response<Charge> {
-        client.post_form(&format!("/charges/{}", id), &params)
+        client.post_form(&format!("/charges/{}", id), &params, None)
     }
 }
 

@@ -66,8 +66,9 @@ impl UsageRecord {
         client: &Client,
         id: SubscriptionItemId,
         params: CreateUsageRecord,
+        idempotency_key: Option<&str>,
     ) -> Response<Self> {
-        client.post_form(&format!("/subscription_items/{}/usage_records", id), &params)
+        client.post_form(&format!("/subscription_items/{}/usage_records", id), &params, idempotency_key)
     }
 }
 

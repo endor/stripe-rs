@@ -105,7 +105,7 @@ impl Client {
         path: &str,
         form: F,
     ) -> Response<T> {
-        self.send_blocking(self.inner.post_form(path, form))
+        self.send_blocking(self.inner.post_form(path, form, None))
     }
 
     fn send_blocking<T: DeserializeOwned + Send + 'static>(

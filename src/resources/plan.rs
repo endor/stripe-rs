@@ -133,7 +133,7 @@ impl Plan {
 
     /// You can create plans using the API, or in the Stripe [Dashboard](https://dashboard.stripe.com/subscriptions/products).
     pub fn create(client: &Client, params: CreatePlan<'_>) -> Response<Plan> {
-        client.post_form("/plans", &params)
+        client.post_form("/plans", &params, None)
     }
 
     /// Retrieves the plan with the given ID.
@@ -146,7 +146,7 @@ impl Plan {
     /// Any parameters not provided are left unchanged.
     /// By design, you cannot change a plan’s ID, amount, currency, or billing cycle.
     pub fn update(client: &Client, id: &PlanId, params: UpdatePlan<'_>) -> Response<Plan> {
-        client.post_form(&format!("/plans/{}", id), &params)
+        client.post_form(&format!("/plans/{}", id), &params, None)
     }
 
     /// Deleting plans means new subscribers can’t be added.

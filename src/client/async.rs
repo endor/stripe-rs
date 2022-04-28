@@ -166,6 +166,7 @@ impl Client {
         &self,
         path: &str,
         form: F,
+        idempotency_key: Option<&str>,
     ) -> Response<T> {
         let url = self.url(path);
         let mut req = RequestBuilder::new()
@@ -181,6 +182,9 @@ impl Client {
             HeaderName::from_static("content-type"),
             HeaderValue::from_str("application/x-www-form-urlencoded").unwrap(),
         );
+        if let Some(key) = idempotency_key {
+            req.headers_mut().insert(HeaderName::from_static("idempotency-key"), HeaderValue::from_str(key).unwrap());
+        }
         send(&self.client, req)
     }
 

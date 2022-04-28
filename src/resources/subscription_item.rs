@@ -73,7 +73,7 @@ impl SubscriptionItem {
         client: &Client,
         params: CreateSubscriptionItem<'_>,
     ) -> Response<SubscriptionItem> {
-        client.post_form("/subscription_items", &params)
+        client.post_form("/subscription_items", &params, None)
     }
 
     /// Retrieves the invoice item with the given ID.
@@ -91,7 +91,7 @@ impl SubscriptionItem {
         id: &SubscriptionItemId,
         params: UpdateSubscriptionItem<'_>,
     ) -> Response<SubscriptionItem> {
-        client.post_form(&format!("/subscription_items/{}", id), &params)
+        client.post_form(&format!("/subscription_items/{}", id), &params, None)
     }
 
     /// Deletes an item from the subscription.

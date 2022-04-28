@@ -127,7 +127,7 @@ impl Product {
 
     /// Creates a new product object.
     pub fn create(client: &Client, params: CreateProduct<'_>) -> Response<Product> {
-        client.post_form("/products", &params)
+        client.post_form("/products", &params, None)
     }
 
     /// Retrieves the details of an existing product.
@@ -141,7 +141,7 @@ impl Product {
     ///
     /// Any parameters not provided will be left unchanged.
     pub fn update(client: &Client, id: &ProductId, params: UpdateProduct<'_>) -> Response<Product> {
-        client.post_form(&format!("/products/{}", id), &params)
+        client.post_form(&format!("/products/{}", id), &params, None)
     }
 
     /// Delete a product.

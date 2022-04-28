@@ -86,7 +86,7 @@ impl WebhookEndpoint {
     /// If set to true, then a Connect webhook endpoint that notifies the specified `url` about events from all connected accounts is created; otherwise an account webhook endpoint that notifies the specified `url` only about events from your account is created.
     /// You can also create webhook endpoints in the [webhooks settings](https://dashboard.stripe.com/account/webhooks) section of the Dashboard.
     pub fn create(client: &Client, params: CreateWebhookEndpoint<'_>) -> Response<WebhookEndpoint> {
-        client.post_form("/webhook_endpoints", &params)
+        client.post_form("/webhook_endpoints", &params, None)
     }
 
     /// Retrieves the webhook endpoint with the given ID.
@@ -106,7 +106,7 @@ impl WebhookEndpoint {
         id: &WebhookEndpointId,
         params: UpdateWebhookEndpoint<'_>,
     ) -> Response<WebhookEndpoint> {
-        client.post_form(&format!("/webhook_endpoints/{}", id), &params)
+        client.post_form(&format!("/webhook_endpoints/{}", id), &params, None)
     }
 
     /// You can also delete webhook endpoints via the [webhook endpoint management](https://dashboard.stripe.com/account/webhooks) page of the Stripe dashboard.

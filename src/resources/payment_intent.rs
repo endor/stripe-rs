@@ -171,7 +171,7 @@ impl PaymentIntent {
     ///
     /// For more details see [https://stripe.com/docs/api/payment_intents/create](https://stripe.com/docs/api/payment_intents/create).
     pub fn create(client: &Client, params: CreatePaymentIntent<'_>) -> Response<PaymentIntent> {
-        client.post_form("/payment_intents", params)
+        client.post_form("/payment_intents", params, None)
     }
 
     /// Retrieves the details of a payment_intent.
@@ -189,7 +189,7 @@ impl PaymentIntent {
         payment_intent_id: &str,
         params: PaymentIntentUpdateParams<'_>,
     ) -> Response<PaymentIntent> {
-        client.post_form(&format!("/payment_intents/{}", payment_intent_id), params)
+        client.post_form(&format!("/payment_intents/{}", payment_intent_id), params, None)
     }
 
     /// Confirm that customer intends to pay with current or provided source. Upon confirmation, the PaymentIntent will attempt to initiate a payment.
@@ -200,7 +200,7 @@ impl PaymentIntent {
         payment_intent_id: &str,
         params: PaymentIntentConfirmParams<'_>,
     ) -> Response<PaymentIntent> {
-        client.post_form(&format!("/payment_intents/{}/confirm", payment_intent_id), params)
+        client.post_form(&format!("/payment_intents/{}/confirm", payment_intent_id), params, None)
     }
 
     /// Capture the funds of an existing uncaptured PaymentIntent where required_action="requires_capture".
@@ -211,7 +211,7 @@ impl PaymentIntent {
         payment_intent_id: &str,
         params: CapturePaymentIntent,
     ) -> Response<PaymentIntent> {
-        client.post_form(&format!("/payment_intents/{}/capture", payment_intent_id), params)
+        client.post_form(&format!("/payment_intents/{}/capture", payment_intent_id), params, None)
     }
 
     /// A PaymentIntent object can be canceled when it is in one of these statuses: requires_source, requires_capture, requires_confirmation, requires_source_action.
@@ -222,7 +222,7 @@ impl PaymentIntent {
         payment_intent_id: &str,
         params: CancelPaymentIntent,
     ) -> Response<PaymentIntent> {
-        client.post_form(&format!("/payment_intents/{}/cancel", payment_intent_id), params)
+        client.post_form(&format!("/payment_intents/{}/cancel", payment_intent_id), params, None)
     }
 
     /// List all payment_intents.

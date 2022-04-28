@@ -40,7 +40,7 @@ impl Charge {
         charge_id: &ChargeId,
         params: CaptureCharge<'_>,
     ) -> Response<Charge> {
-        client.post_form(&format!("/charges/{}/capture", charge_id), params)
+        client.post_form(&format!("/charges/{}/capture", charge_id), params, None)
     }
 }
 

@@ -207,7 +207,7 @@ impl Subscription {
     ///
     /// Each customer can have up to 25 active or scheduled subscriptions.
     pub fn create(client: &Client, params: CreateSubscription<'_>) -> Response<Subscription> {
-        client.post_form("/subscriptions", &params)
+        client.post_form("/subscriptions", &params, None)
     }
 
     /// Retrieves the subscription with the given ID.
@@ -228,7 +228,7 @@ impl Subscription {
         id: &SubscriptionId,
         params: UpdateSubscription<'_>,
     ) -> Response<Subscription> {
-        client.post_form(&format!("/subscriptions/{}", id), &params)
+        client.post_form(&format!("/subscriptions/{}", id), &params, None)
     }
 
     /// Cancels a customer’s subscription immediately.

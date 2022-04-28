@@ -143,7 +143,7 @@ impl Customer {
 
     /// Creates a new customer object.
     pub fn create(client: &Client, params: CreateCustomer<'_>) -> Response<Customer> {
-        client.post_form("/customers", &params)
+        client.post_form("/customers", &params, None)
     }
 
     /// Retrieves the details of an existing customer.
@@ -165,7 +165,7 @@ impl Customer {
         id: &CustomerId,
         params: UpdateCustomer<'_>,
     ) -> Response<Customer> {
-        client.post_form(&format!("/customers/{}", id), &params)
+        client.post_form(&format!("/customers/{}", id), &params, None)
     }
 
     /// Permanently deletes a customer.

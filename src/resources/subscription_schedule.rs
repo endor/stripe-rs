@@ -97,7 +97,7 @@ impl SubscriptionSchedule {
         client: &Client,
         params: CreateSubscriptionSchedule<'_>,
     ) -> Response<SubscriptionSchedule> {
-        client.post_form("/subscription_schedules", &params)
+        client.post_form("/subscription_schedules", &params, None)
     }
 
     /// Retrieves the details of an existing subscription schedule.
@@ -117,7 +117,7 @@ impl SubscriptionSchedule {
         id: &SubscriptionScheduleId,
         params: UpdateSubscriptionSchedule<'_>,
     ) -> Response<SubscriptionSchedule> {
-        client.post_form(&format!("/subscription_schedules/{}", id), &params)
+        client.post_form(&format!("/subscription_schedules/{}", id), &params, None)
     }
 }
 

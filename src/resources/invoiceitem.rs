@@ -124,7 +124,7 @@ impl InvoiceItem {
     ///
     /// If no invoice is specified, the item will be on the next invoice created for the customer specified.
     pub fn create(client: &Client, params: CreateInvoiceItem<'_>) -> Response<InvoiceItem> {
-        client.post_form("/invoiceitems", &params)
+        client.post_form("/invoiceitems", &params, None)
     }
 
     /// Retrieves the invoice item with the given ID.
@@ -140,7 +140,7 @@ impl InvoiceItem {
         id: &InvoiceItemId,
         params: UpdateInvoiceItem<'_>,
     ) -> Response<InvoiceItem> {
-        client.post_form(&format!("/invoiceitems/{}", id), &params)
+        client.post_form(&format!("/invoiceitems/{}", id), &params, None)
     }
 
     /// Deletes an invoice item, removing it from an invoice.
